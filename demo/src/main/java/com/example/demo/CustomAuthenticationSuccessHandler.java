@@ -13,6 +13,6 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         // Custom logic on successful authentication
-        response.sendRedirect("/home"); // Example redirection
+        response.sendRedirect("/home"); // Example redirection comm
     }
 }
