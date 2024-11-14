@@ -16,19 +16,18 @@ import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 public class MyConfig {
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf.disable())
                 .cors(cors -> cors.disable())
                 .authorizeHttpRequests(req -> req
-                        .requestMatchers("/user/add").hasRole("USER")
-                        .requestMatchers("/admin/add").hasRole("ADMIN")
+                        .requestMatchers("/user/*").hasRole("USER")
+                        .requestMatchers("/admin/*").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
-                        .loginPage("/custom-login")       // Custom login page URL
+                        .loginPage("/custom-login")       // Custom login page URL is custom-custom-login.html
                         .successHandler(customAuthSuccessHandler()) // Custom success handler
                         .permitAll()                       // Allow everyone to see the login page
                 )
